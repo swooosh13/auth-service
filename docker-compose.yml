@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  auth:
+    container_name: auth
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongodb
+  mongodb:
+    container_name: mongo_db
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadm
+      - MONGO_INITDB_ROOT_PASSWORD=mongoadm
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - ./.dbdata/db:/data/db

@@ -1,0 +1,14 @@
+version: '3.9'
+
+is_debug: true
+listen:
+  host: localhost
+  port: 9000
+mongodb:
+  host: 127.0.0.1
+  port: 27017
+  username: atuser
+  password: atuser
+  database: auth
+  authdb: auth
+  collection: users
