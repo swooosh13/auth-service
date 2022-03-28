@@ -12,3 +12,4 @@ mongodb:
   database: auth
   authdb: auth
   collection: users
+secret: asdadsno23029dnksdcsdcln

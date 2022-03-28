@@ -23,6 +23,7 @@ type Config struct {
 		AuthDB     string `yaml:"authdb"`
 		Collection string `yaml:"collection"`
 	} `yaml:"mongodb"`
+	SecretKey string `yaml:"secret"`
 }
 
 var instance *Config

@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi"
 	"github.com/swooosh13/quest-auth/pkg/logger"
-	"go.mongodb.org/mongo-driver/mongo"
 	"go.uber.org/zap"
 
 	"github.com/swooosh13/quest-auth/internal/composites"
@@ -24,20 +24,14 @@ func main() {
 		return
 	}
 
-	_ = OpenCollection(mongodbComposite.GetDb(), "users")
-
 	logger.Info("mongodb composite has been created")
-	// userComposite, err := composites.NewUserComposite(mongodbComposite)
-	// if err != nil {
-	// 	logger.Fatal("failed to create user composite", zap.String("error", err.Error()))
-	// 	return
-	// }
-	// userComposite.Handler.Register(r)
+	userComposite, err := composites.NewUserComposite(mongodbComposite)
+	if err != nil {
+		logger.Fatal("failed to create user composite", zap.String("error", err.Error()))
+		return
+	}
+	userComposite.Handler.Register(r)
 
-	http.ListenAndServe("127.0.0.1:9000", r)
-}
-
-func OpenCollection(db *mongo.Database, c string) (collection *mongo.Collection) {
-	collection = db.Collection(c)
-	return
+	logger.Info("server has been started", zap.String("host", cfg.Listen.Host), zap.String("port", cfg.Listen.Port))
+	http.ListenAndServe(fmt.Sprintf("%s:%s", cfg.Listen.Host, cfg.Listen.Port), r)
 }
