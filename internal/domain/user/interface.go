@@ -5,7 +5,6 @@ import (
 )
 
 type Storage interface {
-	// SignIn(ctx context.Context, user SignInUserDTO) (string, error)
 	SignUp(ctx context.Context, user User) (*InsertedId, error)
 	Count(ctx context.Context, field string, value string) (int, error)
 	FindOne(ctx context.Context, field string, value string) (*User, error)

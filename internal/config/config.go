@@ -2,6 +2,8 @@ package config
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"sync"
 
 	"github.com/spf13/viper"
@@ -31,20 +33,30 @@ var once sync.Once
 
 func GetConfig() *Config {
 	once.Do(func() {
-		viper.SetConfigName("local")
-		viper.SetConfigType("yaml")
-		viper.AddConfigPath("./configs")
+		var configName string
+		configName = os.Getenv("NODE_ENV")
+		if configName == "" {
+			configName = "local"
+		}
 
-		err := viper.ReadInConfig()
+		viper.SetConfigName(configName)
+		viper.SetConfigType("yaml")
+
+		dirPath, err := filepath.Abs("./configs")
 		if err != nil {
-			logger.Fatal(fmt.Sprint("fatal error config file: %w \n", err))
+			logger.Fatal(fmt.Sprintf("fatal error config dir: %s \n", err))
+		}
+		viper.AddConfigPath(dirPath)
+		err = viper.ReadInConfig()
+		if err != nil {
+			logger.Fatal(fmt.Sprintf("fatal error config file: %s \n", err))
 		}
 
 		instance = &Config{}
 
 		err = viper.Unmarshal(instance)
 		if err != nil {
-			logger.Fatal(fmt.Sprint("Fatal parse config: %w \n", err))
+			logger.Fatal(fmt.Sprintf("fatal parse config: %s \n", err))
 		}
 	})
 

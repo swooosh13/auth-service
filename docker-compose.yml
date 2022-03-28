@@ -1,17 +1,21 @@
 version: '3.9'
 
 services:
-  auth:
-    container_name: auth
+  authapp:
+    container_name: authapp
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8000:9000"
+    environment:
+      - NODE_ENV=stage
     depends_on:
       - mongodb
+    networks:
+      - api-auth
   mongodb:
-    container_name: mongo_db
+    container_name: mongo
     image: mongo:latest
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadm
@@ -21,3 +25,9 @@ services:
     volumes:
       - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./.dbdata/db:/data/db
+    networks:
+      - api-auth
+
+networks:
+  api-auth:
+    driver: bridge

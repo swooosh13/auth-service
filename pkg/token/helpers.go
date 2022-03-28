@@ -4,6 +4,8 @@ import (
 	"log"
 	"time"
 
+	"github.com/swooosh13/quest-auth/internal/config"
+
 	"github.com/dgrijalva/jwt-go"
 )
 
@@ -13,9 +15,9 @@ type SignedDetails struct {
 	jwt.StandardClaims
 }
 
-var SECRET_KEY string = "abcd" // TODO os.GET_ENV("SECRET_KEY") or from config
-
 func GenerateAllTokens(login, uid string) (signedToken string, signedRefreshToken string, err error) {
+	var SECRET_KEY string = config.GetConfig().SecretKey
+
 	claims := &SignedDetails{
 		Login: login,
 		Uid:   uid,
@@ -40,4 +42,3 @@ func GenerateAllTokens(login, uid string) (signedToken string, signedRefreshToke
 
 	return token, refreshToken, err
 }
-

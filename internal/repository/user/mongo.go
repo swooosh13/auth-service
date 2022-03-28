@@ -13,17 +13,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// mongo code
 type userStorage struct {
 	db *mongo.Database
 }
 
 func NewStorage(db *mongo.Database) user.Storage {
 	return &userStorage{db: db}
-}
-
-func (u *userStorage) SignIn(ctx context.Context, user user.SignInUserDTO) (string, error) {
-	return "", nil
 }
 
 func (u *userStorage) Count(ctx context.Context, field string, value string) (int, error) {
