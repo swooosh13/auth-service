@@ -4,7 +4,7 @@ version: '3.9'
 is_debug: true
 listen:
   host: localhost
-  port: 9000
+  port: 8002
 mongodb:
   host: mongo
   port: 27017

@@ -40,7 +40,7 @@ func GetConfig() *Config {
 		}
 
 		viper.SetConfigName(configName)
-		viper.SetConfigType("yaml")
+		viper.SetConfigType("yml")
 
 		dirPath, err := filepath.Abs("./configs")
 		if err != nil {
@@ -49,7 +49,8 @@ func GetConfig() *Config {
 		viper.AddConfigPath(dirPath)
 		err = viper.ReadInConfig()
 		if err != nil {
-			logger.Fatal(fmt.Sprintf("fatal error config file: %s \n", err))
+			logger.Info(fmt.Sprintf("hello %s", "world"))
+			logger.Fatal(fmt.Sprintf("fatal error config file, dir path: %s, error: %s \n", err, dirPath))
 		}
 
 		instance = &Config{}

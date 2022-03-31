@@ -11,6 +11,8 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/swooosh13/quest-auth/internal/domain/user"
 	"github.com/swooosh13/quest-auth/internal/handlers/api"
+	"github.com/swooosh13/quest-auth/pkg/logger"
+	"go.uber.org/zap"
 )
 
 var validate = validator.New()
@@ -25,8 +27,10 @@ func NewHandler(service user.Service) api.Handler {
 
 func (h *handler) Register(r *chi.Mux) {
 	r.Route("/user", func(r chi.Router) {
+		r.Use(api.LogRequest)
 		r.Post("/sign-in", h.SignInHandler)
 		r.Post("/sign-up", h.SignUpHandler)
+		r.With(api.Authentication).Get("/private", h.PrivateExample)
 	})
 }
 
@@ -97,4 +101,10 @@ func (h *handler) SignUpHandler(rw http.ResponseWriter, r *http.Request) {
 
 	rw.Write(jsonData)
 	return
+}
+
+func (h *handler) PrivateExample(rw http.ResponseWriter, r *http.Request) {
+	requestID := r.Context().Value("login").(string)
+	logger.Info("private-info", zap.String("login", requestID))
+	rw.Write([]byte("hello"))
 }
