@@ -3,7 +3,7 @@ package crypto
 import (
 	"fmt"
 
-	"github.com/swooosh13/quest-auth/pkg/logger"
+	"github.com/swooosh13/auth-service/pkg/logger"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 )

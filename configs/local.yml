@@ -1,6 +1,5 @@
 version: '3.9'
 
-# change config for stage & dev
 is_debug: true
 listen:
   host: localhost

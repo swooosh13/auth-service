@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/swooosh13/quest-auth/pkg/logger"
-	"github.com/swooosh13/quest-auth/pkg/token"
+	"github.com/swooosh13/auth-service/pkg/logger"
+	"github.com/swooosh13/auth-service/pkg/token"
 	"go.uber.org/zap"
 )
 

@@ -6,11 +6,11 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi"
-	"github.com/swooosh13/quest-auth/pkg/logger"
+	"github.com/swooosh13/auth-service/pkg/logger"
 	"go.uber.org/zap"
 
-	"github.com/swooosh13/quest-auth/internal/composites"
-	"github.com/swooosh13/quest-auth/internal/config"
+	"github.com/swooosh13/auth-service/internal/composites"
+	"github.com/swooosh13/auth-service/internal/config"
 )
 
 func main() {

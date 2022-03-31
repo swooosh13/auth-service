@@ -3,7 +3,7 @@ package composites
 import (
 	"context"
 
-	"github.com/swooosh13/quest-auth/pkg/client/mongodb"
+	"github.com/swooosh13/auth-service/pkg/client/mongodb"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

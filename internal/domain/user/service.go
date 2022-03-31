@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/swooosh13/quest-auth/pkg/crypto"
-	"github.com/swooosh13/quest-auth/pkg/token"
+	"github.com/swooosh13/auth-service/pkg/crypto"
+	"github.com/swooosh13/auth-service/pkg/token"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 

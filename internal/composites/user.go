@@ -1,10 +1,10 @@
 package composites
 
 import (
-	user2 "github.com/swooosh13/quest-auth/internal/domain/user"
-	"github.com/swooosh13/quest-auth/internal/handlers/api"
-	"github.com/swooosh13/quest-auth/internal/handlers/api/user"
-	user1 "github.com/swooosh13/quest-auth/internal/repository/user"
+	user2 "github.com/swooosh13/auth-service/internal/domain/user"
+	"github.com/swooosh13/auth-service/internal/handlers/api"
+	"github.com/swooosh13/auth-service/internal/handlers/api/user"
+	user1 "github.com/swooosh13/auth-service/internal/repository/user"
 )
 
 type UserComposite struct {

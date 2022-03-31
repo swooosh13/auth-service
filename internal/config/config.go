@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/spf13/viper"
-	"github.com/swooosh13/quest-auth/pkg/logger"
+	"github.com/swooosh13/auth-service/pkg/logger"
 )
 
 type Config struct {

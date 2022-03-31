@@ -1,4 +1,4 @@
-module github.com/swooosh13/quest-auth
+module github.com/swooosh13/auth-service
 
 go 1.18
 

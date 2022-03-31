@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/swooosh13/quest-auth/internal/config"
+	"github.com/swooosh13/auth-service/internal/config"
 
 	"github.com/dgrijalva/jwt-go"
 )

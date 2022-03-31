@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/swooosh13/quest-auth/internal/domain/user"
-	"github.com/swooosh13/quest-auth/pkg/client/mongodb"
+	"github.com/swooosh13/auth-service/internal/domain/user"
+	"github.com/swooosh13/auth-service/pkg/client/mongodb"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

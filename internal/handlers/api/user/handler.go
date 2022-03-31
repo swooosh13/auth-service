@@ -9,9 +9,9 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-playground/validator/v10"
-	"github.com/swooosh13/quest-auth/internal/domain/user"
-	"github.com/swooosh13/quest-auth/internal/handlers/api"
-	"github.com/swooosh13/quest-auth/pkg/logger"
+	"github.com/swooosh13/auth-service/internal/domain/user"
+	"github.com/swooosh13/auth-service/internal/handlers/api"
+	"github.com/swooosh13/auth-service/pkg/logger"
 	"go.uber.org/zap"
 )
 
