@@ -33,5 +33,5 @@ func main() {
 	userComposite.Handler.Register(r)
 
 	logger.Info("server has been started", zap.String("host", cfg.Listen.Host), zap.String("port", cfg.Listen.Port))
-	http.ListenAndServe(fmt.Sprintf("%s:%s", cfg.Listen.Host, cfg.Listen.Port), r)
+	http.ListenAndServe(fmt.Sprintf(":%s", cfg.Listen.Port), r)
 }

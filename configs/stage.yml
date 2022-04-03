@@ -3,8 +3,8 @@ version: '3.9'
 # change config for stage & dev
 is_debug: true
 listen:
-  host: localhost
-  port: 8002
+  host: 127.0.0.1
+  port: 8000
 mongodb:
   host: mongo
   port: 27017

@@ -7,13 +7,14 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - NODE_ENV=stage
     depends_on:
       - mongodb
     networks:
-      - api-auth
+      - api
+
   mongodb:
     container_name: mongo
     image: mongo:latest
@@ -26,8 +27,8 @@ services:
       - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./.dbdata/db:/data/db
     networks:
-      - api-auth
+      - api
 
 networks:
-  api-auth:
+  api:
     driver: bridge
