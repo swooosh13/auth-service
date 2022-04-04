@@ -13,7 +13,7 @@ services:
     depends_on:
       - mongodb
     networks:
-      - api
+      - auth_network
 
   mongodb:
     container_name: mongo
@@ -27,11 +27,9 @@ services:
       - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./.dbdata/db:/data/db
     networks:
-      - api
-      - proxy
+      - auth_network
 
 networks:
-  proxy:
-    external: false
-  api:
+  auth_network:
     driver: bridge
+    external: false

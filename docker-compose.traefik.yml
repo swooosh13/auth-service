@@ -11,7 +11,9 @@ services:
     depends_on:
       - mongodb
     networks:
-      - api
+      - auth_network
+      - proxy
+
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
@@ -32,11 +34,11 @@ services:
       - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
       - ./.dbdata/db:/data/db
     networks:
-      - api
+      - auth_network
       - proxy
 
 networks:
   proxy:
-    external: false
-  api:
+    external: true
+  auth_network:
     driver: bridge
