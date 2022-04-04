@@ -6,14 +6,19 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "8001:8000"
     environment:
       - NODE_ENV=stage
     depends_on:
       - mongodb
     networks:
       - api
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.authapp-secure.entrypoints=websecure"
+      - "traefik.http.routers.authapp-secure.rule=Host(`authapp.$TRAEFIK_URL`)"
+      - "traefik.http.routers.authapp-secure.service=authapp"
+      - "traefik.http.services.authapp.loadbalancer.server.port=8000"
 
   mongodb:
     container_name: mongo
