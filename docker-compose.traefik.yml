@@ -36,6 +36,14 @@ services:
     networks:
       - auth_network
       - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.tcp.routers.mongo-secure.entrypoints=mongo"
+      - "traefik.tcp.routers.mongo-secure.rule=HostSNI(`*`)"
+      - "traefik.tcp.routers.mongo-secure.tls=false"
+      - "traefik.http.routers.mongo-secure.service=mongodb"
+      - "traefik.http.services.mongodb.loadbalancer.server.port=27017"
 
 networks:
   proxy:
